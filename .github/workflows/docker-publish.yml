@@ -7,11 +7,11 @@ name: Docker
 
 on:
   push:
-    branches: [ "docker-v2p0" ]
+    branches: [ "docker-v2p0-debug" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ "docker-v2p0" ]
+    branches: [ "docker-v2p0-debug" ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -38,7 +38,7 @@ jobs:
       - name: SSH keys setup
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.SSH_KEY}}
+          ssh-private-key: ${{ secrets.SSH_KEY_DEPLOY}}
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
